@@ -1,0 +1,5 @@
+.active{
+    border-left:2px solid #eee;
+    font-weight: bold;
+    border-radius:0px !important;
+}
