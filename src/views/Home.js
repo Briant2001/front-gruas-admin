@@ -1,10 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css"
 import { useAuth } from "../context/authContext";
 import "../assest/css/menu.css";
-import { AiOutlineHome,AiOutlineUser} from "react-icons/ai"
+import { AiOutlineHome,AiOutlineLogout,AiOutlineUser} from "react-icons/ai"
 import { Link, NavLink,Outlet } from "react-router-dom"
 import "../assest/css/styles.css"
 import { useEffect } from "react";
+import { Bienvenida, ButtonLogout,DivCoten, Main } from "../styleComponents/Home";
 const Home = ()=>{
     //const navigate=useNavigate()
 
@@ -19,7 +20,7 @@ const Home = ()=>{
     }
     
     if(loading) {return <h1>cargando</h1>}
-    
+    console.log(user);
     return(
         
             <div className="container-fluid">
@@ -49,23 +50,19 @@ const Home = ()=>{
                         </ul>
                     </div>
                     <div className="dropdown open p-2">
-                        <button className="btn border-none dropdown-toggle text-white" type="button" id="triggerId"
+                        <ButtonLogout onClick={handleLogout } className="btn border-none text-white" type="button" id="triggerId"
                             aria-expanded="false">
-                            <AiOutlineUser className="fa fa-user"/><span className="ms-2">Yousaf</span>
-                        </button>
-                        <div className="dropdown-menu" aria-labelledby="triggerId">
-                            <button className="dropdown-item">Senttings </button>
-                            <button className="dropdown-item" >Profile </button>
-                        </div>
+                            <span className="ms-2">Salir</span><AiOutlineLogout style={{fontSize:"20px"}} className="fa fa-user"/>
+                        </ButtonLogout>
+                    
                     </div>
                 </div>
-                <div className="p-3">
-                    <main>
-                        {user ?  <h1>BIENVENIDO {user.displayName || user.email}</h1>:<h1>Registrate</h1>}
-                        <button onClick={handleLogout }>Salir</button>
+                <DivCoten>
+                    <Main>
+                        {user ?  <Bienvenida><h3>BIENVENIDO {user.displayName || user.email}</h3></Bienvenida>:<h1>Registrate</h1>}
                         <Outlet/>
-                    </main>
-                </div>
+                    </Main>
+                </DivCoten>
             </div>
 
         </div>

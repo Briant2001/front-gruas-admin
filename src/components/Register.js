@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../context/authContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Alert } from "./Alert";
 import { Background } from "../styleComponents/styles";
 import { BoxShadow, Button, Card, Contenedor, DivButton, DivLabel, H1, IconDiv, P, Titulo } from "../styleComponents/Login";
@@ -46,6 +46,9 @@ const Register = ()=>{
                 } if(error.code === "auth/missing-password"){
                     setError("Contraseña faltante")
                 }
+                if(error.code ==="auth/network-request-failed"){
+                    setError("Sin conexion a internet")
+                } 
             }
     
 
@@ -122,6 +125,8 @@ const Register = ()=>{
                 </Card>
                 <IconDiv>
                     <H1>Gruas Arreola   </H1>
+                    <Link style={{textAlign:"center",textDecoration:"underline"}} to="/login">¿Ya tienes una cuenta?</Link>
+
                     <img src={register} style={{background:"transparent"}}/>
                 </IconDiv>
                 </BoxShadow>

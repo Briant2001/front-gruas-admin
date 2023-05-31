@@ -51,7 +51,11 @@ const Login = ()=>{
                 setError("Contraseña faltante")
             } if(error.code ==="auth/wrong-password"){
                 setError("Contraseña incorrecta")
+            }
+            if(error.code ==="auth/network-request-failed"){
+                setError("Sin conexion a internet")
             } 
+            
         }
     
 
